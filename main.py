@@ -1,21 +1,25 @@
 from collections import Counter
 
-def main(s):
-    with open (f"books/{s}.txt") as f:
-        
-        file_contents = f.read().split()
-        contador = len(file_contents)
-    print(f"El número de palabras es {contador}")
-    print(cuenta_letras(s))
-
-def cuenta_letras(s):
-    with open (f"books/{s}.txt") as f:
+def main(s, w=20):
+    with open (f"books/{s.lower()}.txt") as f:      
         file_contents = f.read().lower()
-        contador = dict(Counter(file_contents).most_common())
-        #return(f"la frecuencia de letras es {letras}")
-        return(f"La frecuencia de letras y símbolos es {contador}")
+    print(cuenta_palabras(s, file_contents))    
+    print(cuenta_letras(s, file_contents))
+    print(frecuencia_palabras(s, file_contents, w))
+
+def cuenta_palabras(s, file_contents):
+    contador = len(file_contents.split())
+    return(f"El número de palabras en {s.capitalize()} es {contador}")
+      
+
+def cuenta_letras(s, file_contents):
+        contador = dict(Counter(file_contents.lower()).most_common())
+        return(f"La frecuencia de letras y símbolos de {s.capitalize()} es {contador}")
+def frecuencia_palabras(s, file_contents, w=20):
+        contador = dict(Counter(file_contents.lower().split()).most_common(w))
+        return(f"Las {w} palabras más usadas en {s.capitalize()} son {contador}")
 
 
-main("frankenstein")
+main("Frankenstein")
     
 
