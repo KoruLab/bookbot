@@ -15,20 +15,15 @@ def report(s, p, l, f, w):
     print("2)")
     print("En cuanto a la frecuencia de las distintas letras en la obra:")
     for i, k in l.items():
-        if i == " ":
-            pass
-        elif i in "a, b, c, d, e, f, g, h, i, j, k, l, m, n, ñ, o, p, q, r, s, t, u, w, x, y, z":
+        if i.isalpha():
             print(f'La "{i}" aparece {k} veces')
     print("3)")
-    
+    print(f"Por útimo, y respecto a las {w} palabras más frecuentes:")
     for i, k in f.items():
-        if w == 1:
-            print(f"Por último, la palabra más frecuente es {i} que aparece {k} veces")
-        elif w > 0:
-            print(f"Por último, y en cuanto a las {w} palabras más frecuentes:")
+        if w > 0:       
             print(f'-"{i.capitalize()}" aparece {k} veces')
     print("")
-    print("Gracias por usar este analizador de textos. Recuerda que puedes analizar cualquier texto en /books")
+    print("¡Gracias por usar este analizador de textos! Recuerda que puedes analizar cualquier texto en /books")
       
 
 def cuenta_palabras(s, file_contents):
@@ -44,6 +39,13 @@ def frecuencia_palabras(s, file_contents, w=20):
     return(contador)
 
 
-main("Frankenstein", 23)
+main("Frankenstein", 3)
+
+"""
+Ampliación pendiente para analizar texto de webs y redes sociales:
+Análisis de n-gramas (frases comunes)
+Comparación entre múltiples textos
+Filtros para palabras vacías (stopwords)
+"""
     
 
